@@ -1,0 +1,1021 @@
+Claro! Aqui está tudo em um único arquivo HTML:
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PosObra Express - Retirada Pos-Obra e Carretos</title>
+    <meta name="description" content="Servico profissional de retirada de entulho, carretos e mudancas em toda Regiao Metropolitana do Vale do Paraiba e Litoral Norte - SP">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;900&family=Manrope:wght@400;500;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+    
+    <style>
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        :root {
+            --primary: #15803d;
+            --primary-foreground: #ffffff;
+            --secondary: #E8E6D9;
+            --secondary-foreground: #1A1A1A;
+            --accent: #1A1A1A;
+            --accent-foreground: #ffffff;
+            --action: #FFD700;
+            --action-foreground: #000000;
+            --white: #ffffff;
+            --shadow-brutalist: 4px 4px 0px 0px rgba(0,0,0,1);
+            --shadow-brutalist-lg: 8px 8px 0px 0px rgba(0,0,0,1);
+        }
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: 'Manrope', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+            -webkit-font-smoothing: antialiased;
+            color: var(--accent);
+            background-color: var(--white);
+            line-height: 1.6;
+        }
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Barlow Condensed', sans-serif;
+            font-weight: 700;
+            text-transform: uppercase;
+            line-height: 1.1;
+        }
+        .container { max-width: 1280px; margin: 0 auto; padding: 0 1.5rem; }
+        @media (min-width: 768px) { .container { padding: 0 3rem; } }
+        @media (min-width: 1024px) { .container { padding: 0 6rem; } }
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            padding: 0.75rem 1.5rem;
+            font-family: 'Barlow Condensed', sans-serif;
+            font-weight: 700;
+            font-size: 1rem;
+            text-transform: uppercase;
+            text-decoration: none;
+            border: 2px solid var(--accent);
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+        .btn:hover { transform: translateY(-4px); box-shadow: var(--shadow-brutalist-lg); }
+        .btn-action { background-color: var(--action); color: var(--action-foreground); }
+        .btn-white { background-color: var(--white); color: var(--accent); }
+        .btn-lg { padding: 1.25rem 2rem; font-size: 1.125rem; }
+        .btn-full { width: 100%; }
+        .btn i { width: 1.25rem; height: 1.25rem; }
+        .badge {
+            display: inline-block;
+            background-color: var(--primary);
+            color: var(--primary-foreground);
+            padding: 0.5rem 1rem;
+            font-family: 'Barlow Condensed', sans-serif;
+            font-weight: 700;
+            font-size: 0.875rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+        .section-header { text-align: center; margin-bottom: 4rem; }
+        .section-label {
+            color: var(--primary);
+            font-family: 'Barlow Condensed', sans-serif;
+            font-weight: 600;
+            font-size: 0.875rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+        .section-title { font-size: 2.5rem; color: var(--accent); margin-top: 1rem; }
+        @media (min-width: 768px) { .section-title { font-size: 3rem; } }
+        .section-description {
+            font-size: 1.125rem;
+            color: rgba(26, 26, 26, 0.7);
+            margin-top: 1rem;
+            max-width: 42rem;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 50;
+            transition: all 0.3s ease;
+            background: transparent;
+        }
+        .navbar.scrolled { background: var(--white); box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1); }
+        .navbar-container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 5rem;
+        }
+        @media (min-width: 768px) { .navbar-container { padding: 0 3rem; } }
+        @media (min-width: 1024px) { .navbar-container { padding: 0 6rem; } }
+        .navbar-logo img { height: 4rem; width: auto; }
+        .navbar-menu { display: none; align-items: center; gap: 2rem; }
+        @media (min-width: 768px) { .navbar-menu { display: flex; } }
+        .nav-link {
+            background: none;
+            border: none;
+            font-family: 'Barlow Condensed', sans-serif;
+            font-weight: 600;
+            font-size: 1.125rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--accent);
+            cursor: pointer;
+            transition: color 0.2s ease;
+        }
+        .nav-link:hover { color: var(--primary); }
+        .nav-call-btn { padding: 0.75rem 1.5rem; }
+        .mobile-menu-btn {
+            display: block;
+            background: none;
+            border: none;
+            padding: 0.5rem;
+            color: var(--accent);
+            cursor: pointer;
+        }
+        @media (min-width: 768px) { .mobile-menu-btn { display: none; } }
+        .mobile-menu-btn i { width: 2rem; height: 2rem; }
+        .mobile-menu {
+            display: none;
+            background: var(--white);
+            border-top: 2px solid var(--accent);
+            padding: 1rem 1.5rem;
+        }
+        .mobile-menu.active { display: block; }
+        .mobile-nav-link {
+            display: block;
+            width: 100%;
+            text-align: left;
+            background: none;
+            border: none;
+            font-family: 'Barlow Condensed', sans-serif;
+            font-weight: 600;
+            font-size: 1.25rem;
+            text-transform: uppercase;
+            color: var(--accent);
+            padding: 0.5rem 0;
+            cursor: pointer;
+        }
+        .mobile-call-btn { margin-top: 1rem; width: 100%; }
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            background: linear-gradient(135deg, #E8E6D9 0%, #ffffff 50%, #dcfce7 100%);
+            padding-top: 5rem;
+            position: relative;
+            overflow: hidden;
+        }
+        .hero::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background-image: url('https://www.transparenttextures.com/patterns/concrete-wall.png');
+            opacity: 0.05;
+        }
+        .hero-container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 5rem 1.5rem;
+            position: relative;
+            z-index: 10;
+        }
+        @media (min-width: 768px) { .hero-container { padding: 5rem 3rem; } }
+        @media (min-width: 1024px) { .hero-container { padding: 5rem 6rem; } }
+        .hero-content { display: grid; gap: 3rem; align-items: center; }
+        @media (min-width: 1024px) { .hero-content { grid-template-columns: 1fr 1fr; } }
+        .hero-text { display: flex; flex-direction: column; gap: 2rem; }
+        .hero-title {
+            font-size: 3rem;
+            font-weight: 900;
+            letter-spacing: -0.025em;
+            line-height: 0.95;
+            color: var(--accent);
+        }
+        @media (min-width: 768px) { .hero-title { font-size: 4.5rem; } }
+        .hero-title .text-primary { color: var(--primary); display: block; margin-top: 0.5rem; }
+        .hero-description {
+            font-size: 1.125rem;
+            color: rgba(26, 26, 26, 0.8);
+            line-height: 1.75;
+            max-width: 36rem;
+        }
+        @media (min-width: 768px) { .hero-description { font-size: 1.25rem; } }
+        .hero-buttons { display: flex; flex-direction: column; gap: 1rem; }
+        @media (min-width: 640px) { .hero-buttons { flex-direction: row; } }
+        .trust-badges { display: flex; flex-wrap: wrap; gap: 1rem; padding-top: 1rem; }
+        .trust-badge {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: var(--white);
+            padding: 0.5rem 1rem;
+            border: 2px solid var(--accent);
+        }
+        .trust-badge i { width: 1.25rem; height: 1.25rem; color: var(--primary); }
+        .trust-badge span {
+            font-family: 'Barlow Condensed', sans-serif;
+            font-weight: 600;
+            font-size: 0.875rem;
+            text-transform: uppercase;
+        }
+        .coverage-box {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.75rem;
+            background: rgba(21, 128, 61, 0.1);
+            padding: 1rem;
+            border-left: 4px solid var(--primary);
+        }
+        .coverage-box > i {
+            width: 1.5rem;
+            height: 1.5rem;
+            color: var(--primary);
+            flex-shrink: 0;
+            margin-top: 0.25rem;
+        }
+        .coverage-title {
+            font-family: 'Barlow Condensed', sans-serif;
+            font-weight: 700;
+            text-transform: uppercase;
+            font-size: 0.875rem;
+            color: var(--accent);
+        }
+        .coverage-text { font-size: 0.875rem; color: rgba(26, 26, 26, 0.7); }
+        .hero-image { display: none; position: relative; }
+        @media (min-width: 1024px) { .hero-image { display: block; } }
+        .hero-image .image-container { position: relative; }
+        .hero-image .image-bg {
+            position: absolute;
+            inset: -1rem;
+            background: rgba(21, 128, 61, 0.2);
+            transform: rotate(-3deg);
+        }
+        .hero-image img {
+            position: relative;
+            width: 100%;
+            height: auto;
+            border: 4px solid var(--accent);
+            box-shadow: var(--shadow-brutalist-lg);
+        }
+        .clients-badge {
+            position: absolute;
+            bottom: -2rem;
+            left: -2rem;
+            background: var(--action);
+            color: var(--action-foreground);
+            padding: 1.5rem;
+            border: 2px solid var(--accent);
+            box-shadow: var(--shadow-brutalist);
+        }
+        .clients-number {
+            font-family: 'Barlow Condensed', sans-serif;
+            font-size: 1.875rem;
+            font-weight: 900;
+        }
+        .clients-text {
+            font-family: 'Barlow Condensed', sans-serif;
+            font-size: 0.875rem;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+        .services { padding: 5rem 0; background: var(--white); }
+        @media (min-width: 768px) { .services { padding: 8rem 0; } }
+        .services-grid { display: grid; gap: 1.5rem; }
+        @media (min-width: 768px) { .services-grid { grid-template-columns: repeat(3, 1fr); } }
+        .service-card {
+            background: var(--white);
+            border: 2px solid var(--accent);
+            padding: 2rem;
+            transition: all 0.2s ease;
+            cursor: pointer;
+        }
+        .service-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-brutalist-lg); }
+        @media (min-width: 768px) { .service-card-wide { grid-column: span 2; } }
+        .service-icon {
+            display: inline-flex;
+            padding: 1rem;
+            border: 2px solid var(--accent);
+            margin-bottom: 1.5rem;
+            transition: transform 0.2s ease;
+        }
+        .service-card:hover .service-icon { transform: scale(1.1); }
+        .service-icon i { width: 2rem; height: 2rem; color: var(--white); }
+        .service-icon.bg-primary { background: var(--primary); }
+        .service-icon.bg-action { background: var(--action); }
+        .service-icon.bg-action i { color: var(--accent); }
+        .service-icon.bg-accent { background: var(--accent); }
+        .service-icon.bg-secondary { background: var(--secondary); }
+        .service-icon.bg-secondary i { color: var(--accent); }
+        .service-card h3 { font-size: 1.5rem; color: var(--accent); margin-bottom: 1rem; }
+        @media (min-width: 768px) { .service-card h3 { font-size: 1.875rem; } }
+        .service-card p { color: rgba(26, 26, 26, 0.7); line-height: 1.6; }
+        .about { padding: 5rem 0; background: var(--secondary); }
+        @media (min-width: 768px) { .about { padding: 8rem 0; } }
+        .about-grid { display: grid; gap: 3rem; align-items: center; }
+        @media (min-width: 1024px) { .about-grid { grid-template-columns: 1fr 1fr; } }
+        .about-content { display: flex; flex-direction: column; gap: 1.5rem; }
+        .about-content .section-title { text-align: left; margin-top: 0; }
+        .about-text { font-size: 1.125rem; color: rgba(26, 26, 26, 0.8); line-height: 1.75; }
+        .about-features {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+            padding-top: 1.5rem;
+        }
+        .about-feature {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            background: var(--white);
+            padding: 1rem;
+            border: 2px solid var(--accent);
+        }
+        .about-feature i { width: 1.5rem; height: 1.5rem; color: var(--primary); }
+        .about-feature span {
+            font-family: 'Barlow Condensed', sans-serif;
+            font-weight: 600;
+            color: var(--accent);
+        }
+        .about-image { position: relative; }
+        .about-image .image-container { position: relative; }
+        .about-image .image-bg {
+            position: absolute;
+            inset: -1rem;
+            background: rgba(21, 128, 61, 0.2);
+        }
+        .about-image .image-bg.rotate { transform: rotate(3deg); }
+        .about-image img {
+            position: relative;
+            width: 100%;
+            height: auto;
+            border: 4px solid var(--accent);
+            box-shadow: var(--shadow-brutalist-lg);
+        }
+        .why-choose { padding: 5rem 0; background: var(--white); }
+        @media (min-width: 768px) { .why-choose { padding: 8rem 0; } }
+        .reasons-grid { display: grid; gap: 1.5rem; }
+        @media (min-width: 640px) { .reasons-grid { grid-template-columns: repeat(2, 1fr); } }
+        @media (min-width: 1024px) { .reasons-grid { grid-template-columns: repeat(4, 1fr); } }
+        .reason-card {
+            background: var(--white);
+            border: 2px solid var(--accent);
+            padding: 1.5rem;
+            text-align: center;
+            transition: all 0.2s ease;
+        }
+        .reason-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-brutalist-lg); }
+        .reason-icon {
+            display: inline-flex;
+            padding: 1rem;
+            background: var(--primary);
+            border: 2px solid var(--accent);
+            margin-bottom: 1rem;
+        }
+        .reason-icon i { width: 2rem; height: 2rem; color: var(--white); }
+        .reason-card h3 { font-size: 1.25rem; color: var(--accent); margin-bottom: 0.75rem; }
+        .reason-card p { font-size: 0.875rem; color: rgba(26, 26, 26, 0.7); }
+        .testimonials { padding: 5rem 0; background: var(--white); }
+        @media (min-width: 768px) { .testimonials { padding: 8rem 0; } }
+        .testimonials-grid { display: grid; gap: 1.5rem; }
+        @media (min-width: 768px) { .testimonials-grid { grid-template-columns: repeat(3, 1fr); } }
+        .testimonial-card {
+            background: var(--white);
+            border: 2px solid var(--accent);
+            padding: 2rem;
+            transition: all 0.2s ease;
+        }
+        .testimonial-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-brutalist-lg); }
+        .stars { display: flex; gap: 0.25rem; margin-bottom: 1rem; }
+        .star-filled { width: 1.25rem; height: 1.25rem; fill: var(--action); color: var(--action); }
+        .testimonial-text { color: rgba(26, 26, 26, 0.8); margin-bottom: 1.5rem; line-height: 1.6; }
+        .testimonial-author { border-top: 2px solid var(--accent); padding-top: 1rem; }
+        .author-name {
+            font-family: 'Barlow Condensed', sans-serif;
+            font-weight: 700;
+            text-transform: uppercase;
+            color: var(--accent);
+        }
+        .author-role { font-size: 0.875rem; color: rgba(26, 26, 26, 0.6); }
+        .quote-section { padding: 5rem 0; background: var(--secondary); }
+        @media (min-width: 768px) { .quote-section { padding: 8rem 0; } }
+        .quote-form-container {
+            max-width: 56rem;
+            margin: 0 auto;
+            background: var(--white);
+            border: 2px solid var(--accent);
+            padding: 2rem;
+            box-shadow: var(--shadow-brutalist-lg);
+        }
+        @media (min-width: 768px) { .quote-form-container { padding: 3rem; } }
+        .quote-form { display: flex; flex-direction: column; gap: 1.5rem; }
+        .form-row { display: grid; gap: 1.5rem; }
+        @media (min-width: 768px) { .form-row { grid-template-columns: 1fr 1fr; } }
+        .form-group { display: flex; flex-direction: column; gap: 0.5rem; }
+        .form-group label {
+            font-family: 'Barlow Condensed', sans-serif;
+            font-weight: 600;
+            font-size: 0.875rem;
+            text-transform: uppercase;
+        }
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            padding: 0.75rem 1rem;
+            border: 2px solid var(--accent);
+            font-family: 'Manrope', sans-serif;
+            font-size: 1rem;
+            background: var(--white);
+            transition: all 0.2s ease;
+        }
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(21, 128, 61, 0.1);
+        }
+        .form-group textarea { resize: none; }
+        .footer { background: var(--accent); color: var(--white); }
+        .footer .container { padding-top: 3rem; padding-bottom: 3rem; }
+        .footer-grid { display: grid; gap: 3rem; margin-bottom: 2rem; }
+        @media (min-width: 768px) { .footer-grid { grid-template-columns: repeat(3, 1fr); } }
+        .footer-logo {
+            height: 5rem;
+            width: auto;
+            background: var(--white);
+            padding: 0.5rem;
+            margin-bottom: 1rem;
+        }
+        .footer-description { color: rgba(255, 255, 255, 0.8); line-height: 1.6; }
+        .footer-col h3 { font-size: 1.25rem; margin-bottom: 1rem; }
+        .footer-links { display: flex; flex-direction: column; gap: 0.75rem; }
+        .footer-links a {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            transition: color 0.2s ease;
+        }
+        .footer-links a:hover { color: var(--action); }
+        .footer-links i { width: 1.25rem; height: 1.25rem; }
+        .footer-address {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.75rem;
+            color: rgba(255, 255, 255, 0.8);
+        }
+        .footer-address i { width: 1.25rem; height: 1.25rem; flex-shrink: 0; margin-top: 0.25rem; }
+        .footer-contact-name { color: rgba(255, 255, 255, 0.6); font-size: 0.875rem; padding-top: 0.5rem; }
+        .footer-hours { display: flex; flex-direction: column; gap: 0.5rem; color: rgba(255, 255, 255, 0.8); }
+        .footer-hours .highlight { color: var(--action); font-weight: 600; }
+        .footer-social { display: flex; gap: 1rem; margin-top: 1.5rem; }
+        .footer-social a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0.75rem;
+            background: rgba(255, 255, 255, 0.1);
+            color: var(--white);
+            transition: background 0.2s ease;
+        }
+        .footer-social a:hover { background: var(--action); color: var(--accent); }
+        .footer-social i { width: 1.25rem; height: 1.25rem; }
+        .footer-bottom { border-top: 2px solid rgba(255, 255, 255, 0.2); padding-top: 2rem; text-align: center; }
+        .footer-bottom p { color: rgba(255, 255, 255, 0.6); font-size: 0.875rem; }
+        .whatsapp-float {
+            position: fixed;
+            bottom: 1.5rem;
+            right: 1.5rem;
+            width: 3.5rem;
+            height: 3.5rem;
+            background: #25D366;
+            color: var(--white);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+            z-index: 40;
+            transition: all 0.3s ease;
+        }
+        .whatsapp-float:hover { transform: scale(1.1); box-shadow: 0 6px 16px rgba(0, 0, 0, 0.4); }
+        .toast {
+            position: fixed;
+            top: 1.5rem;
+            left: 50%;
+            transform: translateX(-50%) translateY(-100px);
+            background: var(--accent);
+            color: var(--white);
+            padding: 1rem 2rem;
+            border: 2px solid var(--accent);
+            box-shadow: var(--shadow-brutalist);
+            font-family: 'Barlow Condensed', sans-serif;
+            font-weight: 600;
+            text-transform: uppercase;
+            z-index: 100;
+            opacity: 0;
+            transition: all 0.3s ease;
+        }
+        .toast.show { transform: translateX(-50%) translateY(0); opacity: 1; }
+        .toast.success { background: var(--primary); border-color: var(--primary); }
+        .toast.error { background: #dc2626; border-color: #dc2626; }
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .hero-text > * { animation: fadeInUp 0.6s ease forwards; }
+        .hero-text > *:nth-child(1) { animation-delay: 0.1s; }
+        .hero-text > *:nth-child(2) { animation-delay: 0.2s; }
+        .hero-text > *:nth-child(3) { animation-delay: 0.3s; }
+        .hero-text > *:nth-child(4) { animation-delay: 0.4s; }
+        .hero-text > *:nth-child(5) { animation-delay: 0.5s; }
+        .hero-text > *:nth-child(6) { animation-delay: 0.6s; }
+    </style>
+</head>
+<body>
+    <nav id="navbar" class="navbar">
+        <div class="navbar-container">
+            <div class="navbar-logo">
+                <img src="https://customer-assets.emergentagent.com/job_posobra-express/artifacts/k1dokomm_logo.png" alt="PosObra Express Logo">
+            </div>
+            <div class="navbar-menu" id="navbarMenu">
+                <button class="nav-link" onclick="scrollToSection('#home')">Inicio</button>
+                <button class="nav-link" onclick="scrollToSection('#services')">Servicos</button>
+                <button class="nav-link" onclick="scrollToSection('#about')">Sobre</button>
+                <button class="nav-link" onclick="scrollToSection('#quote')">Orcamento</button>
+                <a href="tel:+5511993692842" class="btn btn-action nav-call-btn">
+                    <i data-lucide="phone"></i>
+                    Ligar Agora
+                </a>
+            </div>
+            <button class="mobile-menu-btn" id="mobileMenuBtn" onclick="toggleMenu()">
+                <i data-lucide="menu" id="menuIcon"></i>
+            </button>
+        </div>
+        <div class="mobile-menu" id="mobileMenu">
+            <button class="mobile-nav-link" onclick="scrollToSection('#home')">Inicio</button>
+            <button class="mobile-nav-link" onclick="scrollToSection('#services')">Servicos</button>
+            <button class="mobile-nav-link" onclick="scrollToSection('#about')">Sobre</button>
+            <button class="mobile-nav-link" onclick="scrollToSection('#quote')">Orcamento</button>
+            <a href="tel:+5511993692842" class="btn btn-action mobile-call-btn">
+                <i data-lucide="phone"></i>
+                Ligar Agora
+            </a>
+        </div>
+    </nav>
+
+    <section id="home" class="hero">
+        <div class="hero-container">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <span class="badge">Retirada Rapida e Segura</span>
+                    <h1 class="hero-title">
+                        RETIRADA POS-OBRA &
+                        <span class="text-primary">CARRETOS</span>
+                    </h1>
+                    <p class="hero-description">
+                        Servico profissional de retirada de entulho, carretos e mudancas em toda Regiao Metropolitana do Vale do Paraiba e Litoral Norte - SP. Orcamento gratuito em minutos!
+                    </p>
+                    <div class="hero-buttons">
+                        <button onclick="scrollToSection('#quote')" class="btn btn-action btn-lg">
+                            Solicitar Orcamento
+                            <i data-lucide="arrow-right"></i>
+                        </button>
+                        <a href="https://wa.me/5511993692842?text=Ola! Gostaria de solicitar um orcamento." target="_blank" rel="noopener noreferrer" class="btn btn-white btn-lg">
+                            WhatsApp
+                        </a>
+                    </div>
+                    <div class="trust-badges">
+                        <div class="trust-badge">
+                            <i data-lucide="check-circle-2"></i>
+                            <span>Licenciado e Segurado</span>
+                        </div>
+                        <div class="trust-badge">
+                            <i data-lucide="check-circle-2"></i>
+                            <span>Atendimento 24/7</span>
+                        </div>
+                        <div class="trust-badge">
+                            <i data-lucide="check-circle-2"></i>
+                            <span>Toda SP e Regiao</span>
+                        </div>
+                    </div>
+                    <div class="coverage-box">
+                        <i data-lucide="map-pin"></i>
+                        <div>
+                            <p class="coverage-title">Cobertura Total</p>
+                            <p class="coverage-text">Atendemos todo municipio da Regiao Metropolitana do Vale do Paraiba e Litoral Norte - SP</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="hero-image">
+                    <div class="image-container">
+                        <div class="image-bg"></div>
+                        <img src="https://customer-assets.emergentagent.com/job_posobra-express/artifacts/kboxvtjq_caminhao.jpeg" alt="Caminhao de Carreto">
+                    </div>
+                    <div class="clients-badge">
+                        <p class="clients-number">+1000</p>
+                        <p class="clients-text">Clientes Atendidos</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="services" class="services">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-label">Nossos Servicos</span>
+                <h2 class="section-title">O Que Fazemos</h2>
+                <p class="section-description">Solucoes completas para retirada pos-obra, carretos e muito mais</p>
+            </div>
+            <div class="services-grid">
+                <div class="service-card service-card-wide">
+                    <div class="service-icon bg-primary">
+                        <i data-lucide="trash-2"></i>
+                    </div>
+                    <h3>Retirada de Entulho</h3>
+                    <p>Remocao completa de entulho de obras, reformas e demolicoes com descarte ecologico adequado.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon bg-action">
+                        <i data-lucide="truck"></i>
+                    </div>
+                    <h3>Carretos & Mudancas</h3>
+                    <p>Transporte seguro de moveis, equipamentos e materiais para qualquer lugar de SP.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon bg-accent">
+                        <i data-lucide="hammer"></i>
+                    </div>
+                    <h3>Demolicao Pequena</h3>
+                    <p>Servico de demolicao de pequeno porte com retirada inclusa.</p>
+                </div>
+                <div class="service-card service-card-wide">
+                    <div class="service-icon bg-secondary">
+                        <i data-lucide="package"></i>
+                    </div>
+                    <h3>Descarte Correto</h3>
+                    <p>Destinamos todo o material para locais autorizados, seguindo normas ambientais.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="about" class="about">
+        <div class="container">
+            <div class="about-grid">
+                <div class="about-content">
+                    <span class="section-label">Sobre Nos</span>
+                    <h2 class="section-title">Profissionais em Retirada Pos-Obra</h2>
+                    <p class="about-text">
+                        Com anos de experiencia no mercado, somos especialistas em retirada de entulho, carretos e mudancas em toda Regiao Metropolitana do Vale do Paraiba e Litoral Norte - SP. Nossa equipe e treinada para oferecer servico rapido, seguro e com preco justo.
+                    </p>
+                    <p class="about-text">
+                        Trabalhamos com equipamentos proprios e seguimos todas as normas de seguranca e meio ambiente, garantindo o descarte correto de todos os materiais.
+                    </p>
+                    <div class="about-features">
+                        <div class="about-feature">
+                            <i data-lucide="clock"></i>
+                            <span>Atendimento Rapido</span>
+                        </div>
+                        <div class="about-feature">
+                            <i data-lucide="shield"></i>
+                            <span>Seguranca Total</span>
+                        </div>
+                        <div class="about-feature">
+                            <i data-lucide="thumbs-up"></i>
+                            <span>Preco Justo</span>
+                        </div>
+                        <div class="about-feature">
+                            <i data-lucide="award"></i>
+                            <span>Qualidade Garantida</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="about-image">
+                    <div class="image-container">
+                        <div class="image-bg rotate"></div>
+                        <img src="https://customer-assets.emergentagent.com/job_posobra-express/artifacts/l9j8u890_caminhaopele.jpeg" alt="Equipe de Trabalho">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="why-choose">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-label">Por Que Escolher</span>
+                <h2 class="section-title">Diferenciais</h2>
+            </div>
+            <div class="reasons-grid">
+                <div class="reason-card">
+                    <div class="reason-icon">
+                        <i data-lucide="check-circle-2"></i>
+                    </div>
+                    <h3>Garantia de Qualidade</h3>
+                    <p>Servico executado com excelencia e compromisso</p>
+                </div>
+                <div class="reason-card">
+                    <div class="reason-icon">
+                        <i data-lucide="recycle"></i>
+                    </div>
+                    <h3>Descarte Ecologico</h3>
+                    <p>Destinamos corretamente todo material seguindo normas ambientais</p>
+                </div>
+                <div class="reason-card">
+                    <div class="reason-icon">
+                        <i data-lucide="clock"></i>
+                    </div>
+                    <h3>Pontualidade</h3>
+                    <p>Cumprimos prazos e horarios acordados com rigor</p>
+                </div>
+                <div class="reason-card">
+                    <div class="reason-icon">
+                        <i data-lucide="map-pin"></i>
+                    </div>
+                    <h3>Cobertura Total</h3>
+                    <p>Atendemos toda Regiao Metropolitana do Vale do Paraiba e Litoral Norte - SP</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="testimonials">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-label">Depoimentos</span>
+                <h2 class="section-title">O Que Dizem Nossos Clientes</h2>
+            </div>
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <div class="stars">
+                        <i data-lucide="star" class="star-filled"></i>
+                        <i data-lucide="star" class="star-filled"></i>
+                        <i data-lucide="star" class="star-filled"></i>
+                        <i data-lucide="star" class="star-filled"></i>
+                        <i data-lucide="star" class="star-filled"></i>
+                    </div>
+                    <p class="testimonial-text">"Excelente servico! Retiraram todo o entulho da minha reforma em poucas horas. Equipe profissional e preco justo."</p>
+                    <div class="testimonial-author">
+                        <p class="author-name">Carlos Silva</p>
+                        <p class="author-role">Proprietario</p>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="stars">
+                        <i data-lucide="star" class="star-filled"></i>
+                        <i data-lucide="star" class="star-filled"></i>
+                        <i data-lucide="star" class="star-filled"></i>
+                        <i data-lucide="star" class="star-filled"></i>
+                        <i data-lucide="star" class="star-filled"></i>
+                    </div>
+                    <p class="testimonial-text">"Sempre indico para meus clientes. Sao pontuais, cuidadosos e o preco e muito competitivo. Recomendo!"</p>
+                    <div class="testimonial-author">
+                        <p class="author-name">Ana Paula Santos</p>
+                        <p class="author-role">Arquiteta</p>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="stars">
+                        <i data-lucide="star" class="star-filled"></i>
+                        <i data-lucide="star" class="star-filled"></i>
+                        <i data-lucide="star" class="star-filled"></i>
+                        <i data-lucide="star" class="star-filled"></i>
+                        <i data-lucide="star" class="star-filled"></i>
+                    </div>
+                    <p class="testimonial-text">"Trabalho com eles ha anos. Nunca tive problemas. Sempre rapidos e eficientes na retirada pos-obra."</p>
+                    <div class="testimonial-author">
+                        <p class="author-name">Joao Ferreira</p>
+                        <p class="author-role">Engenheiro Civil</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="quote" class="quote-section">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-label">Solicite Agora</span>
+                <h2 class="section-title">Orcamento Gratuito</h2>
+                <p class="section-description">Preencha o formulario e receba uma resposta em minutos</p>
+            </div>
+            <div class="quote-form-container">
+                <form id="quoteForm" class="quote-form">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="name">Nome Completo *</label>
+                            <input type="text" id="name" name="name" placeholder="Seu nome" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="whatsapp">WhatsApp *</label>
+                            <input type="tel" id="whatsapp" name="whatsapp" placeholder="(11) 99999-9999" required>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="email">E-mail (Opcional)</label>
+                            <input type="email" id="email" name="email" placeholder="seu@email.com">
+                        </div>
+                        <div class="form-group">
+                            <label for="service_type">Tipo de Servico *</label>
+                            <select id="service_type" name="service_type" required>
+                                <option value="">Selecione o servico</option>
+                                <option value="retirada-entulho">Retirada de Entulho</option>
+                                <option value="carreto">Carreto</option>
+                                <option value="mudanca">Mudanca</option>
+                                <option value="demolicao">Demolicao Pequena</option>
+                                <option value="outro">Outro</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="location">Endereco/Localizacao *</label>
+                        <input type="text" id="location" name="location" placeholder="Bairro ou endereco completo" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="description">Descricao do Servico (Opcional)</label>
+                        <textarea id="description" name="description" rows="4" placeholder="Descreva detalhes sobre o servico que precisa..."></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-action btn-lg btn-full">
+                        <i data-lucide="send"></i>
+                        Solicitar Orcamento
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <img src="https://customer-assets.emergentagent.com/job_posobra-express/artifacts/k1dokomm_logo.png" alt="Logo" class="footer-logo">
+                    <p class="footer-description">
+                        Servico profissional de retirada pos-obra e carretos em toda Regiao Metropolitana do Vale do Paraiba e Litoral Norte - SP.
+                    </p>
+                </div>
+                <div class="footer-col">
+                    <h3>Contato</h3>
+                    <div class="footer-links">
+                        <a href="tel:+5511993692842">
+                            <i data-lucide="phone"></i>
+                            (11) 99369-2842
+                        </a>
+                        <a href="https://wa.me/5511993692842" target="_blank" rel="noopener noreferrer">
+                            <i data-lucide="phone"></i>
+                            WhatsApp: (11) 99369-2842
+                        </a>
+                        <a href="mailto:felipaomassapura@gmail.com">
+                            <i data-lucide="mail"></i>
+                            felipaomassapura@gmail.com
+                        </a>
+                        <div class="footer-address">
+                            <i data-lucide="map-pin"></i>
+                            <span>Vale do Paraiba - SP<br>Litoral Norte - SP</span>
+                        </div>
+                        <p class="footer-contact-name">Contato: Felipe Santana</p>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h3>Horario</h3>
+                    <div class="footer-hours">
+                        <p>Segunda a Sexta: 7h - 19h</p>
+                        <p>Sabado: 7h - 14h</p>
+                        <p class="highlight">Atendimento 24/7</p>
+                    </div>
+                    <div class="footer-social">
+                        <a href="https://wa.me/5511993692842" target="_blank" rel="noopener noreferrer">
+                            <i data-lucide="phone"></i>
+                        </a>
+                        <a href="https://instagram.com" target="_blank" rel="noopener noreferrer">
+                            <i data-lucide="instagram"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© <span id="currentYear"></span> PosObra Express - Felipe Santana. Todos os direitos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <a href="https://wa.me/5511993692842?text=Ola! Gostaria de solicitar um orcamento." target="_blank" rel="noopener noreferrer" class="whatsapp-float">
+        <svg viewBox="0 0 24 24" fill="currentColor" width="28" height="28">
+            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+        </svg>
+    </a>
+
+    <div id="toast" class="toast"></div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            lucide.createIcons();
+            document.getElementById('currentYear').textContent = new Date().getFullYear();
+        });
+
+        var isMenuOpen = false;
+
+        window.addEventListener('scroll', function() {
+            var navbar = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        function toggleMenu() {
+            isMenuOpen = !isMenuOpen;
+            var mobileMenu = document.getElementById('mobileMenu');
+            var menuIcon = document.getElementById('menuIcon');
+            if (isMenuOpen) {
+                mobileMenu.classList.add('active');
+                menuIcon.setAttribute('data-lucide', 'x');
+            } else {
+                mobileMenu.classList.remove('active');
+                menuIcon.setAttribute('data-lucide', 'menu');
+            }
+            lucide.createIcons();
+        }
+
+        function scrollToSection(selector) {
+            var element = document.querySelector(selector);
+            if (element) {
+                element.scrollIntoView({ behavior: 'smooth' });
+                if (isMenuOpen) { toggleMenu(); }
+            }
+        }
+
+        document.getElementById('quoteForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            var name = document.getElementById('name').value;
+            var whatsapp = document.getElementById('whatsapp').value;
+            var email = document.getElementById('email').value;
+            var service_type = document.getElementById('service_type').value;
+            var location = document.getElementById('location').value;
+            var description = document.getElementById('description').value;
+
+            if (!name || !whatsapp || !service_type || !location) {
+                showToast('Preencha todos os campos obrigatorios', 'error');
+                return;
+            }
+
+            var serviceTypes = {
+                'retirada-entulho': 'Retirada de Entulho',
+                'carreto': 'Carreto',
+                'mudanca': 'Mudanca',
+                'demolicao': 'Demolicao Pequena',
+                'outro': 'Outro'
+            };
+
+            var message = 'Ola! Gostaria de solicitar um orcamento.\n\n';
+            message += '*Nome:* ' + name + '\n';
+            message += '*WhatsApp:* ' + whatsapp + '\n';
+            if (email) { message += '*E-mail:* ' + email + '\n'; }
+            message += '*Servico:* ' + (serviceTypes[service_type] || service_type) + '\n';
+            message += '*Localizacao:* ' + location + '\n';
+            if (description) { message += '*Descricao:* ' + description + '\n'; }
+
+            window.open('https://wa.me/5511993692842?text=' + encodeURIComponent(message), '_blank');
+            showToast('Redirecionando para o WhatsApp...', 'success');
+            document.getElementById('quoteForm').reset();
+        });
+
+        function showToast(message, type) {
+            var toast = document.getElementById('toast');
+            toast.textContent = message;
+            toast.className = 'toast ' + (type || 'success');
+            setTimeout(function() { toast.classList.add('show'); }, 100);
+            setTimeout(function() { toast.classList.remove('show'); }, 3000);
+        }
+
+        document.getElementById('whatsapp').addEventListener('input', function(e) {
+            var value = e.target.value.replace(/\D/g, '');
+            if (value.length > 11) { value = value.slice(0, 11); }
+            if (value.length > 0) {
+                if (value.length <= 2) {
+                    value = '(' + value;
+                } else if (value.length <= 7) {
+                    value = '(' + value.slice(0, 2) + ') ' + value.slice(2);
+                } else {
+                    value = '(' + value.slice(0, 2) + ') ' + value.slice(2, 7) + '-' + value.slice(7);
+                }
+            }
+            e.target.value = value;
+        });
+    </script>
+</body>
+</html>
