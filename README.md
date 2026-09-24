@@ -30,8 +30,8 @@
 ## 🚀 Como rodar localmente
 
 ```bash
-git clone https://github.com/santanadesouzanicolas32-sketch/Site-pele.git
-cd Site-pele
+git clone https://github.com/santanadesouzanicolas32-sketch/posobra-express.git
+cd posobra-express
 # abra o index.html no navegador ou use a extensão Live Server do VS Code
 ```
 
